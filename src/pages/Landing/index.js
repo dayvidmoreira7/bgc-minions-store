@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import Header from '../../components/Header';
+import SaleCard from '../../components/SaleCard';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -12,32 +14,8 @@ const Landing = () => {
 
     return (
         <div className="landing-container">
-            <nav>
-                <ul>
-                    <div className="menu-options">
-                        <li>
-                            <a href="#">
-                                Início
-                                <div className="banner"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Reservar
-                                <div className="banner"></div>
-                            </a>
-                        </li>
-                    </div>
-                    <div className="menu-options">
-                        <li>
-                            <Link to={'/session'} className="session-button">
-                                Iniciar sessão
-                            </Link>
-                        </li>
-                    </div>
-                </ul>
-            </nav>
-            <section className="presentation-section">
+            <Header />
+            <section id="presentation" className="presentation-section">
                 <Grid container>
                     <Grid item sm={6} xs={12}>
                         <span className="presentation-text">
@@ -49,15 +27,56 @@ const Landing = () => {
                             Reserve agora a compra do seu próprio<br/>
                             <span className="highlight-text">Minion</span> em <span className="highlight-text">minion</span>tura!</span>
                         </span>
-                        <Button className="presentation-button">Reserve agora</Button>
+                        <Button href="#products" className="presentation-button">Reserve agora</Button>
                     </Grid>
                     <Grid item sm={6} xs={12}>
-                        <img className="presentation-picture" src="./images/minions-presentation.png" />
+                        <img alt="Minions" className="presentation-picture" src="./images/minions-presentation.png" />
                     </Grid>
                 </Grid>
             </section>
-            <section className="form-section">
-
+            <section id="products" className="products-section">
+                <div className="products-carroussel">
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                    <SaleCard 
+                        name="Kevin" 
+                        description="Um minion muito encrenqueiro" 
+                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
+                    />
+                </div>
             </section>
         </div>
     );
