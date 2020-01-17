@@ -1,3 +1,8 @@
+@media(max-width: 599px) {
+    .landing-container {
+        margin-bottom: 30px;
+    }
+}
 /* ------------------------ LANDING: Presentation ------------------------  */
 .landing-container .presentation-section {
     background-image:-webkit-linear-gradient(#87d9fa, #0c419e);
@@ -14,12 +19,12 @@
 }
 .landing-container .presentation-section .presentation-text {
     width: 80%;
-    font-size: 20px;
+    font-size: 1rem;
     padding-bottom: 30px;
     color: white;
 }
 .landing-container .presentation-section .presentation-text .title {
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 500;
 }
 .landing-container .presentation-section .presentation-text .body {
@@ -36,6 +41,7 @@
     font-weight: 100;
     font-size: 18px;
     height: 50px;
+    border: 1px solid white;
     border-radius: 50px;
     transition: .6s;
 }
@@ -50,16 +56,21 @@
     border-radius: 10px;
     box-shadow: 2px 2px 30px 5px #ffffff;
 }
+@media(max-width: 599px) {
+    .landing-container .presentation-section .presentation-picture {
+        margin-top: 30px;
+    }
+}
 
 /* ------------------------ LANDING: Products ------------------------  */
 .landing-container .products-section {
     background-color: #3a3a3a;
-    padding: 100px 50px;
+    padding: 60px 50px;
     overflow-x: auto;
 }
 .landing-container .products-section .products-carroussel {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 

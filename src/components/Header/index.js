@@ -3,30 +3,30 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <nav>
             <ul>
                 <div className="menu-options">
                     <li>
-                        <a href="#presentation">
+                        <Link to="/">
                             Início
                             <div className="banner"></div>
-                        </a>
+                        </Link>
                     </li>
                     {/* <li>
-                        <a href="#">
+                        <Link to="/#products">
                             Reservar
                             <div className="banner"></div>
-                        </a>
+                        </Link>
                     </li> */}
                 </div>
                 <div className="menu-options">
-                    <li>
+                    {/* <li>
                         <Link to={'/session'} className="session-button">
                             Iniciar sessão
                         </Link>
-                    </li>
+                    </li> */}
                 </div>
             </ul>
         </nav>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from '../../components/Header';
 import SaleCard from '../../components/SaleCard';
@@ -11,6 +11,15 @@ import './styles.css'
 const Landing = () => {
     
     document.title = 'BGC Minions Store'
+
+    const [ desktop, setDesktop ] = useState(true);
+
+    const resize = () => {
+        if(window.innerWidth < 599) return setDesktop(false);
+        else return setDesktop(true);
+    }
+
+    window.addEventListener("resize", resize.bind(this));
 
     return (
         <div className="landing-container">
@@ -30,50 +39,16 @@ const Landing = () => {
                         <Button href="#products" className="presentation-button">Reserve agora</Button>
                     </Grid>
                     <Grid item sm={6} xs={12}>
-                        <img alt="Minions" className="presentation-picture" src="./images/minions-presentation.png" />
+                        <img alt="Minions" className="presentation-picture" src={desktop ? "./images/minions-presentation.png" : "./images/minions-presentation-mobile.png"} />
                     </Grid>
                 </Grid>
             </section>
             <section id="products" className="products-section">
                 <div className="products-carroussel">
                     <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
-                    <SaleCard 
-                        name="Kevin" 
-                        description="Um minion muito encrenqueiro" 
+                        minion="Kevin" 
+                        value={133.20}
+                        quantity={43}
                         image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
                     />
                 </div>

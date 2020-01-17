@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from '../../components/Header';
+
 import './styles.css'
 
 const Login = () => {
@@ -8,6 +10,7 @@ const Login = () => {
 
     return (
         <div className="session-container">
+            <Header />
             <h4>Sessão</h4>
         </div>
     );
