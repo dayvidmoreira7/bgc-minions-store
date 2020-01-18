@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 import Util from '../../util';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -22,7 +22,7 @@ const SaleCard = (props) => {
     const [ loading, setLoading ] = useState(false);
     const [ name, setName ] = useState('');
     const [ email, setEmail ] = useState('');
-    const [ quantity, setQuantity ] = useState('');
+    const [ quantity ] = useState(1);
     const [ success, setSuccess ] = useState(false);
 
     const handleExpanded = () => {
@@ -32,11 +32,10 @@ const SaleCard = (props) => {
     const handleReserveForm = async (event) => {
         event.preventDefault();
         setLoading(true);
-        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        axios.post(`https://1t52rw67rg.execute-api.us-east-1.amazonaws.com/dev/reserve`, {
+        api.post(`/reserve`, {
             name,
             email,
-            quantity: 1,
+            quantity,
             minion: props.minion
         }, {
             headers : {
@@ -48,6 +47,18 @@ const SaleCard = (props) => {
             alert('Ocorreu algum erro, tente novamente mais tarde');
         })
         setLoading(false);
+    }
+
+    const handleCart = async () => {
+        api.post(`/cart/reserve`, {
+            itemId: props.id,
+            userId: await localStorage.getItem('userId')
+        }).then(response => {
+            alert('O item está no seu carrinho!');
+            window.location.reload();
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     return (
@@ -65,7 +76,7 @@ const SaleCard = (props) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <IconButton>
+                <IconButton onClick={handleCart}>
                     <AddShoppingCartIcon />
                 </IconButton>
                 <Button size="small" color="default" onClick={handleExpanded}>

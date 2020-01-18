@@ -6,7 +6,7 @@ import './styles.css';
 
 const Header = (props) => {
 
-    const [ token ] = useState(localStorage.getItem('token'));
+    const [ token, setToken ] = useState('');
     const [ user, setUser ] = useState('');
 
     const logoff = () => {
@@ -16,8 +16,10 @@ const Header = (props) => {
 
     Auth.currentSession()
     .then(async (userSession) => {
-        if(user === '')
+        if(user === '') {
             setUser(userSession.accessToken.payload['username']);
+            setToken(userSession.idToken.jwtToken);
+        }
     })
     .catch((err) => {
         
@@ -49,7 +51,7 @@ const Header = (props) => {
                         </Link>
                     </li>
                     <li>
-                        <a href="#" onClick={logoff} className="session-button">
+                        <a onClick={logoff} className="session-button">
                             Sair
                         </a>
                     </li> </>

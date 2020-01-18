@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
+import api from '../../services/api';
+import mock_products from '../../mock/products';
 
 import Header from '../../components/Header';
 import LoginForm from '../../components/LoginForm';
@@ -14,21 +16,26 @@ const Session = () => {
     document.title = 'BGC Minions Store - Sessão'
 
     const [ session, setSession ] = useState(false);
+    const [ cart, setCart ] = useState([]);
 
     Auth.currentSession()
     .then(async (userSession) => {
-        if(!session)
-            setSession(userSession.accessToken.payload);
+        setSession(true);
+    
     })
     .catch((err) => {
-        
+        setSession(false);
     });
 
     return (
         <div className="session-container">
             <Header />
             { session ? 
-            null 
+            <Grid container>
+                <Grid item sm={12}>
+
+                </Grid>
+            </Grid>
             :
             <Grid container>
                 <Grid item sm={6} xs={12}>

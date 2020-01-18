@@ -24,6 +24,7 @@ const LoginForm = () => {
             Auth.currentSession()
             .then(async (userSession) => {
                 await localStorage.setItem('token', userSession.idToken.jwtToken)
+                await localStorage.setItem('userId', userSession.accessToken.payload.client_id);
                 setRedirect('/');
             })
             .catch((err) => {
@@ -37,7 +38,7 @@ const LoginForm = () => {
 
     return (
         <div className="login-container">
-            {redirect != '' ? <Redirect to={redirect} /> : null}
+            {redirect !== '' ? <Redirect to={redirect} /> : null}
             <h2>Ja tem <span className="highlight-text">conta</span>?</h2>
             <form onSubmit={handleLoginForm}>
                 <FormControl fullWidth >

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
+import api from '../../services/api';
+import mock_products from '../../mock/products';
 
 import Header from '../../components/Header';
 import SaleCard from '../../components/SaleCard';
@@ -14,6 +16,8 @@ const Landing = () => {
     document.title = 'BGC Minions Store'
 
     const [ desktop, setDesktop ] = useState(true);
+    const [ products ] = useState(mock_products)
+    const [ renderProducts, setRenderProducts ] = useState([])
 
     const resize = () => {
         if(window.innerWidth < 599) return setDesktop(false);
@@ -21,6 +25,27 @@ const Landing = () => {
     }
 
     window.addEventListener("resize", resize.bind(this));
+
+    Auth.currentSession()
+    .then(async (userSession) => {
+        await api.get(`/cart/${userSession.accessToken.payload.client_id}`)
+        .then(response => {
+            let newProducts = products;
+            for(let item of response.data) {
+                for(let x = 0; x < newProducts.length; x++) {
+                    if(item.itemId == newProducts[x].id) {
+                        newProducts.splice(x, 1);
+                    }
+                }
+            }
+            setRenderProducts(newProducts);
+        }).catch(error => {
+
+        })
+    })
+    .catch((err) => {
+        setRenderProducts(products);
+    });
 
     return (
         <div className="landing-container">
@@ -46,11 +71,18 @@ const Landing = () => {
             </section>
             <section id="products" className="products-section">
                 <div className="products-carroussel">
-                    <SaleCard 
-                        minion="Kevin" 
-                        value={48}
-                        image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
-                    />
+                    {
+                        renderProducts.map((value, i) => {
+                            return (
+                                <SaleCard key={i}
+                                    id={value.id}
+                                    minion={value.minion} 
+                                    value={value.value}
+                                    image={value.image} 
+                                />
+                            )
+                        })
+                    }
                 </div>
             </section>
         </div>
