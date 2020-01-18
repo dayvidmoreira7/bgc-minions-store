@@ -1,0 +1,48 @@
+.session-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image:-webkit-linear-gradient(#87d9fa, #0c419e);
+    color: white;
+}
+
+@media(max-width: 599px) {
+    .session-container { 
+        padding-bottom: 100px;
+    }
+    .session-container .login-container {
+        border-right: none;
+    }
+
+    .session-container .register-container {
+        border-left: none;
+    }
+    .session-container .register-container .only-mobile {
+        display: inline;
+    }
+}
+
+.session-container .highlight-text {
+    color: #f8ca3f;
+}
+.session-container form {
+    width: 60%;
+}
+.session-container form .login-input {
+    margin-bottom: 20px;
+}
+.session-container .my-button {
+    background-color: #f8ca3f;
+    color: white;
+    font-weight: 100;
+    height: 40px;
+    border: 1px solid white;
+    border-radius: 50px;
+    transition: .6s;
+}
+.session-container .my-button:hover {
+    background-color: #f8ca3f;
+    box-shadow: 2px 2px 20px 3px rgba(255, 255, 255, 0.596);
+}

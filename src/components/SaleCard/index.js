@@ -36,7 +36,7 @@ const SaleCard = (props) => {
         axios.post(`https://1t52rw67rg.execute-api.us-east-1.amazonaws.com/dev/reserve`, {
             name,
             email,
-            quantity,
+            quantity: 1,
             minion: props.minion
         }, {
             headers : {
@@ -60,10 +60,7 @@ const SaleCard = (props) => {
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {props.minion} - {props.quantity || 0} unid.
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        R$ {Util.toCurrency(props.value)}
+                        {props.minion} - R$ {Util.toCurrency(props.value)}
                     </Typography>
                 </CardContent>
             </CardActionArea>
@@ -81,7 +78,7 @@ const SaleCard = (props) => {
                         <div>
                             <TextField disabled={success} value={name} onChange={(e) => {setName(e.target.value)}} className="reserve-input" required label="Nome" type="text" />
                             <TextField disabled={success} value={email} onChange={(e) => {setEmail(e.target.value)}} className="reserve-input" required label="Email" type="email" />
-                            <TextField disabled={success} value={quantity} onChange={(e) => {setQuantity(e.target.value)}} className="reserve-input" required label="Quantidade" type="number" />
+                            {/* <TextField disabled={success} value={quantity} onChange={(e) => {setQuantity(e.target.value)}} className="reserve-input" required label="Quantidade" type="number" /> */}
                             <Button disabled={loading || success} type="submit" className={`confirm-button ${success ? 'success' : ''}`} variant="contained">{success ? '✓' : 'Reservar'}</Button>
                         </div>
                     </form>

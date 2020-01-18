@@ -1,8 +1,3 @@
-@media(max-width: 599px) {
-    .landing-container {
-        margin-bottom: 30px;
-    }
-}
 /* ------------------------ LANDING: Presentation ------------------------  */
 .landing-container .presentation-section {
     background-image:-webkit-linear-gradient(#87d9fa, #0c419e);
@@ -75,6 +70,6 @@
 }
 
 /* ------------------------ LANDING: General ------------------------  */
-.highlight-text {
+.landing-container .highlight-text {
     color: #f8ca3f;
 }

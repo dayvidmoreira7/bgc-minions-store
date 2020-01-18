@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Auth } from 'aws-amplify';
 
 import Header from '../../components/Header';
 import SaleCard from '../../components/SaleCard';
@@ -47,8 +48,7 @@ const Landing = () => {
                 <div className="products-carroussel">
                     <SaleCard 
                         minion="Kevin" 
-                        value={133.20}
-                        quantity={43}
+                        value={48}
                         image="https://jflembrancas.com.br/wp-content/uploads/2019/01/PAINEL-MINION-STUART-MENOR-PRECO.jpg" 
                     />
                 </div>

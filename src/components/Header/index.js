@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Auth } from 'aws-amplify';
 import { Link } from 'react-router-dom';
 
 import './styles.css';
 
 const Header = (props) => {
+
+    const [ token ] = useState(localStorage.getItem('token'));
+    const [ user, setUser ] = useState('');
+
+    const logoff = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    Auth.currentSession()
+    .then(async (userSession) => {
+        if(user === '')
+            setUser(userSession.accessToken.payload['username']);
+    })
+    .catch((err) => {
+        
+    });
+
     return (
         <nav>
             <ul>
@@ -22,11 +41,24 @@ const Header = (props) => {
                     </li> */}
                 </div>
                 <div className="menu-options">
-                    {/* <li>
+                    {token ? <>
+                    <li>
+                        <Link to="/session" className="user-name">
+                            {user}
+                            <div className="banner"></div>
+                        </Link>
+                    </li>
+                    <li>
+                        <a href="#" onClick={logoff} className="session-button">
+                            Sair
+                        </a>
+                    </li> </>
+                    :
+                    <li>
                         <Link to={'/session'} className="session-button">
                             Iniciar sessão
                         </Link>
-                    </li> */}
+                    </li>}
                 </div>
             </ul>
         </nav>
