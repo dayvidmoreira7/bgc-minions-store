@@ -15,3 +15,10 @@
 .register-container .only-mobile {
     display: none;
 }
+.register-container .check-button {
+    background-color: rgb(0, 223, 0);
+}
+.register-container .check-button:hover {
+    background-color: rgb(0, 223, 0);
+    box-shadow: 2px 2px 20px 3px rgba(255, 255, 255, 0.596);
+}

@@ -6,6 +6,7 @@ const {
     Landing,
     Session,
     NotFound,
+    Root
 } = Pages;
 
 const Routes = () => (
@@ -13,6 +14,7 @@ const Routes = () => (
         <Switch>
             <Route exact path="/" component={() => <Landing />} />
             <Route exact path="/session" component={() => <Session />} />
+            <Route exact path="/root" component={() => <Root />} />
             <Route component={() => <NotFound />} />
         </Switch>
     </BrowserRouter>
