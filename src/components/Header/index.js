@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import './styles.css';
 
@@ -8,10 +8,11 @@ const Header = (props) => {
 
     const [ token, setToken ] = useState('');
     const [ user, setUser ] = useState('');
+    const [ redirect, setRedirect ] = useState('');
 
     const logoff = () => {
         localStorage.clear();
-        window.location.reload();
+        setRedirect(`/root?path=${window.location.pathname}`);
     }
 
     Auth.currentSession()
@@ -25,7 +26,8 @@ const Header = (props) => {
         
     });
 
-    return (
+    return ( <>
+        {redirect === '' ? null : <Redirect to={redirect} />}
         <nav>
             <ul>
                 <div className="menu-options">
@@ -64,7 +66,7 @@ const Header = (props) => {
                 </div>
             </ul>
         </nav>
-    );
+    </>);
 }
 
 export default Header;

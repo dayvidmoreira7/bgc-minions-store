@@ -4,6 +4,8 @@ import { Auth } from 'aws-amplify';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
+import Fab from '@material-ui/core/Fab';
+import CheckIcon from '@material-ui/icons/Check';
 
 import './styles.css'
 
@@ -11,6 +13,7 @@ const RegisterForm = () => {
 
     const [ signedUp, setSignedUp] = useState(false);
     const [ alreadyCode, setAlreadyCode ] = useState(false);
+    const [ readyToLogin, setReadyToLogin ] = useState(false);
 
     const [ registerUser, setRegisterUser ] = useState('');
     const [ registerPassword, setRegisterPassword ] = useState('');
@@ -44,8 +47,7 @@ const RegisterForm = () => {
         e.preventDefault();
         Auth.confirmSignUp(registerUser, confirmCode)
         .then((response) => {
-            alert('Agora é só entrar na plataforma!')
-            window.location.reload();
+            setReadyToLogin(true);
         })
         .catch((err) => {
             console.log(err);
@@ -55,8 +57,13 @@ const RegisterForm = () => {
     return (
         <div className="register-container">
             <h4 className="only-mobile">Ou</h4>
-            <h2>Ainda não tem <span className="highlight-text">conta</span>?</h2>
-            { signedUp ? 
+            { readyToLogin ? <h2>Agora é só logar!</h2> : <h2>Ainda não tem <span className="highlight-text">conta</span>?</h2>}
+            { readyToLogin ? 
+                <Fab color="primary" aria-label="add" className="check-button">
+                    <CheckIcon />
+              </Fab>
+            :
+            signedUp ? 
                 <form onSubmit={handleConfirmRegisterForm}>
                     <FormControl fullWidth >
                         {alreadyCode ? <TextField color="primary" className="login-input" value={registerUser} onChange={(e) => {setRegisterUser(e.target.value)}} required label="Usuário" type="text" /> : null }
