@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 import api from '../../services/api';
 import Util from '../../util';
@@ -26,6 +27,7 @@ export default class Session extends Component {
     constructor() {
         super();
         this.state = {
+            redirect: '',
             session: null,
             cart: [],
 
@@ -73,8 +75,7 @@ export default class Session extends Component {
     removeCartItem = async (id) => {
         let response = await api.delete(`/cart/reserve/${id}`)
         if(response.status == 200) {
-            alert('Item removido do carrinho')
-            window.location.reload();
+            this.setState({redirect: `/root?path=${window.location.pathname}`});
         }
     }
 
@@ -86,6 +87,7 @@ export default class Session extends Component {
     render() {
         return (
             <div className="session-container">
+                {this.state.redirect === '' ? null : <Redirect to={this.state.redirect} />}
                 <Header />
                 { this.state.session == null ? null :
                 this.state.session ? 
