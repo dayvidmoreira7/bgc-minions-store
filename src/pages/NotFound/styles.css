@@ -1,0 +1,10 @@
+.notfound-container {
+    background-image:-webkit-linear-gradient(#87d9fa, #0c419e);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    color: white;
+}
+.notfound-container .text {
+    padding: 40vh 0;
+}

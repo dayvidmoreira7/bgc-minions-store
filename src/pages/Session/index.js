@@ -5,6 +5,7 @@ import Util from '../../util';
 import mock_products from '../../mock/products';
 
 import Header from '../../components/Header';
+
 import LoginForm from '../../components/LoginForm';
 import RegisterForm from '../../components/RegisterForm';
 import Table from '@material-ui/core/Table';
@@ -25,7 +26,7 @@ export default class Session extends Component {
     constructor() {
         super();
         this.state = {
-            session: false,
+            session: null,
             cart: [],
 
             loading: true,
@@ -86,7 +87,8 @@ export default class Session extends Component {
         return (
             <div className="session-container">
                 <Header />
-                { this.state.session ? 
+                { this.state.session == null ? null :
+                this.state.session ? 
                 <Grid container justify="center" align="center">
                     <Grid item sm={8} xs={10} >
                         { this.state.loading ? 
@@ -101,7 +103,7 @@ export default class Session extends Component {
                                     <TableCell>ID</TableCell>
                                     <TableCell align="center">Produto</TableCell>
                                     <TableCell align="center">Valor</TableCell>
-                                    <TableCell align="right">Ação</TableCell>
+                                    <TableCell align="right">Remover</TableCell>
                                 </TableRow>
                                 </TableHead>
                                 <TableBody>
