@@ -10,5 +10,5 @@ export default {
         let [int, decimal] = formated.split('.');
         let newformated = `${int.replace(',', '.')},${decimal}`
         return newformated;
-    },
+    }
 }

@@ -1,55 +1,9 @@
-nav {
-    position: absolute;
-    width: 100vw;
-    background-color: #f8ca3f;
-}
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0px 50px;
-}
-nav ul .menu-options {
-    display: flex;
-}
-nav ul li {
-    list-style: none;
-    margin: 0;
-    padding: 20px 20px;
-}
-nav ul li .session-button {
-    border: 1px solid white;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 50px;
-}
-nav ul li .session-button:hover {
-    background-color: white;
-    color: #f8ca3f;
-}
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    transition: .6s;
-    font-size: 18px;
-    font-weight: 100;
-    font-family: 'Roboto'
-}
-nav ul li a .banner {
-    height: 2px;
-    border-radius: 5px;
-    width: 0%;
-    background-color: white;
-    transition: .6s;
-}
-nav ul li a:hover .banner {
-    width: 100%;
-}
-
+/* ------------------------ LANDING: Presentation ------------------------  */
 .landing-container .presentation-section {
     background-image:-webkit-linear-gradient(#87d9fa, #0c419e);
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
+    padding: 5vh 0;
     display: flex;
 }
 .landing-container .presentation-section .MuiGrid-item {
@@ -60,12 +14,12 @@ nav ul li a:hover .banner {
 }
 .landing-container .presentation-section .presentation-text {
     width: 80%;
-    font-size: 20px;
+    font-size: 1rem;
     padding-bottom: 30px;
     color: white;
 }
 .landing-container .presentation-section .presentation-text .title {
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 500;
 }
 .landing-container .presentation-section .presentation-text .body {
@@ -82,6 +36,7 @@ nav ul li a:hover .banner {
     font-weight: 100;
     font-size: 18px;
     height: 50px;
+    border: 1px solid white;
     border-radius: 50px;
     transition: .6s;
 }
@@ -96,7 +51,25 @@ nav ul li a:hover .banner {
     border-radius: 10px;
     box-shadow: 2px 2px 30px 5px #ffffff;
 }
+@media(max-width: 599px) {
+    .landing-container .presentation-section .presentation-picture {
+        margin-top: 30px;
+    }
+}
 
-.highlight-text {
+/* ------------------------ LANDING: Products ------------------------  */
+.landing-container .products-section {
+    background-color: #3a3a3a;
+    padding: 60px 50px;
+    overflow-x: auto;
+}
+.landing-container .products-section .products-carroussel {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* ------------------------ LANDING: General ------------------------  */
+.landing-container .highlight-text {
     color: #f8ca3f;
 }

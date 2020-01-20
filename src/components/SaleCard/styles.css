@@ -1,0 +1,13 @@
+.salescard {
+    box-shadow: 2px 2px 30px 3px rgba(255, 255, 255, 0.685);
+}
+.salescard .confirm-button {
+    width: 100%;
+}
+.salescard .confirm-button.success {
+    background-color: #3cc259;
+    color: white;
+}
+.salescard .reserve-input {
+    margin-bottom: 20px;
+}
