@@ -50,6 +50,7 @@ const SaleCard = (props) => {
     }
 
     const handleCart = async () => {
+        if(!await localStorage.getItem('userId'))    return alert('Logue-se para adicionar algo ao carrinho');
         api.post(`/cart/reserve`, {
             itemId: props.id,
             userId: await localStorage.getItem('userId')

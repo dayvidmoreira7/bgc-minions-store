@@ -45,10 +45,10 @@ const Header = (props) => {
                 <div className="menu-options">
                     {token ? <>
                     <li>
-                        <Link to="/session" className="user-name">
+                        <a href="#" onClick={() => window.location = '/session'} className="user-name">
                             {user}
                             <div className="banner"></div>
-                        </Link>
+                        </a>
                     </li>
                     <li>
                         <a onClick={logoff} className="session-button">
@@ -57,9 +57,9 @@ const Header = (props) => {
                     </li> </>
                     :
                     <li>
-                        <Link to={'/session'} className="session-button">
+                        <a onClick={() => window.location = '/session'} className="session-button">
                             Iniciar sessão
-                        </Link>
+                        </a>
                     </li>}
                 </div>
             </ul>

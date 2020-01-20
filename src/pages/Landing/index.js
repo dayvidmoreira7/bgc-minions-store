@@ -33,7 +33,7 @@ const Landing = () => {
             let newProducts = products;
             for(let item of response.data) {
                 for(let x = 0; x < newProducts.length; x++) {
-                    if(item.itemId == newProducts[x].id) {
+                    if(item.itemId === newProducts[x].id) {
                         newProducts.splice(x, 1);
                     }
                 }
