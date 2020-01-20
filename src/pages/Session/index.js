@@ -39,7 +39,7 @@ export default class Session extends Component {
         Auth.currentSession()
         .then(async (userSession) => {
             this.setState({session: true});
-            this.getCartItems(userSession.accessToken.payload.client_id);
+            this.getCartItems(userSession.accessToken.payload.sub);
         })
         .catch((err) => {
             this.setState({session: false});
@@ -142,30 +142,3 @@ export default class Session extends Component {
         );
     }
 }
-// const Session = () => {
-    
-//     document.title = 'BGC Minions Store - Sessão'
-
-//     const [ session, setSession ] = useState(false);
-//     const [ cart, setCart ] = useState([]);
-
-//     Auth.currentSession()
-//     .then(async (userSession) => {
-//         setSession(true);
-//         await api.get(`/cart/${userSession.accessToken.payload.client_id}`)
-//         .then(response => {
-//             console.log(response.data);
-//         }).catch(error => {
-            
-//         })
-//     })
-//     .catch((err) => {
-//         setSession(false);
-//     });
-
-//     return (
-
-//     );
-// }
-
-// export default Session;
