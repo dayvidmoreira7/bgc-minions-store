@@ -24,7 +24,7 @@ const LoginForm = () => {
             Auth.currentSession()
             .then(async (userSession) => {
                 await localStorage.setItem('token', userSession.idToken.jwtToken)
-                await localStorage.setItem('userId', userSession.accessToken.payload.client_id);
+                await localStorage.setItem('userId', userSession.accessToken.payload.sub);
                 setRedirect('/');
             })
             .catch((err) => {

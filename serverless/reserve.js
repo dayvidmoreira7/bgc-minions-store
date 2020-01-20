@@ -56,9 +56,8 @@ module.exports.store = (event, context, callback) => {
 module.exports.show = (event, context, callback) => {
     const params = {
         TableName: process.env.RESERVE_TABLE,
-        Key: {
-            userId: event.pathParameters.id,
-        },
+        FilterExpression : 'userId = :id',
+        ExpressionAttributeValues : {':id' : event.pathParameters.id}
     };
     
     dynamoDb.scan(params).promise()
