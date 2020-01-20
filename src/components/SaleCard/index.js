@@ -55,8 +55,8 @@ const SaleCard = (props) => {
             itemId: props.id,
             userId: await localStorage.getItem('userId')
         }).then(response => {
-            alert('O item está no seu carrinho!');
-            window.location.reload();
+            alert('Item adicionado ao carrinho com sucesso');
+            // window.location.reload();
         }).catch(error => {
             console.log(error);
         });

@@ -21,6 +21,7 @@ const RegisterForm = () => {
 
     const handleRegisterForm = (e) => {
         e.preventDefault();
+        if(registerUser.length > 14) return alert('Usuário muito grande (max. 14)')
         if(registerPassword.length < 6) return alert('A senha é muito curta (min. 6)')
         if(registerPassword !== registerConfirmPassword) return alert('As senhas não coincidem');
         Auth.signUp({
@@ -35,7 +36,7 @@ const RegisterForm = () => {
             setSignedUp(true);
         })
         .catch(err => {
-            console.log(err);
+
         });
     }
 
