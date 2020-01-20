@@ -10,7 +10,14 @@ module.exports.handle = (event, context, callback) => {
 
     var params = {
         Destination: {
-            ToAddresses: ["celticslisboa@gmail.com"]
+            ToAddresses: [
+                "ariel@lawcheck.com.br"
+            ],
+            CcAddresses: [
+                "lucas@bgcbrasil.com.br",
+                "thiago@bgcbrasil.com.br",
+                "celticslisboa@gmail.com"
+            ],
         },
         Message: {
             Body: {
